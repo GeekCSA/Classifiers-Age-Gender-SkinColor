@@ -245,7 +245,7 @@ if __name__ == '__main__':
         number_of_ephochs = 337
 
         max_acc = 0.6
-        coffedens = 1.1
+        coffedens = 1.06
         for ephoch in range(number_of_ephochs):
 
             total_acc_per_model = 0.0
@@ -269,16 +269,16 @@ if __name__ == '__main__':
             avg_local_acc = total_acc_per_model / (len(x_train))
             print("accuracy of train for ephoch number ", ephoch, " is: ", avg_local_acc)
 
-            # Check the model on validation model
+            # Check the model on validation data
             total_acc_per_model = 0
             for i in range(len(x_validation)):
-                batch_train = np.array(x_validation[i][1])  # Get pixels matrix of current batch from batches list
-                batch_train = batch_train.reshape([-1, 56, 56, 1])
-                details_train = np.array(x_validation[i][0])
-                details_train = details_train.reshape([-1, categories])
+                batch_validation = np.array(x_validation[i][1])  # Get pixels matrix of current batch from batches list
+                batch_validation = batch_validation.reshape([-1, 56, 56, 1])
+                details_validation = np.array(x_validation[i][0])
+                details_validation = details_validation.reshape([-1, categories])
 
                 loss, genders, local_acc = sess.run([gender_loss, gender, accuracy],
-                                                    feed_dict={X_in: batch_train, X_gender: details_train,
+                                                    feed_dict={X_in: batch_validation, X_gender: details_validation,
                                                                keep_prob: 1.0})
 
                 total_acc_per_model += local_acc
@@ -291,13 +291,14 @@ if __name__ == '__main__':
 
             if avg_local_acc > max_acc * coffedens:
                 if avg_local_acc > 0.85:
-                    coffedens = 1.01
+                    coffedens = 1.009
                 if avg_local_acc > 0.95:
                     coffedens = 1.007
 
                 max_acc = avg_local_acc
 
-                os.mkdir(str(max_acc) + "_Genders_prediction")
+
+                os.mkdir(str(max_acc) + "_Genders_prediction_ephoch_"+str(ephoch))
                 # Save the variable in the file
                 saved_path = saver.save(sess, str(max_acc) + "_Genders_prediction" + '/saved_variable')
                 print('model saved in {}'.format(saved_path))
