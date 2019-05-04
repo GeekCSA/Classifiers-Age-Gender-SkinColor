@@ -295,10 +295,10 @@ if __name__ == '__main__':
             # Save the model if it better than prev saved model
 
             if avg_local_acc > max_acc * coffedens:
+                if avg_local_acc > 0.65:
+                    coffedens = 1.015
                 if avg_local_acc > 0.85:
                     coffedens = 1.009
-                if avg_local_acc > 0.95:
-                    coffedens = 1.007
 
                 max_acc = avg_local_acc
 
