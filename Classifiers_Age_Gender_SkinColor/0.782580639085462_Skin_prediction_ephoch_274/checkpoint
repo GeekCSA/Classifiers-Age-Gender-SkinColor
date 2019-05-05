@@ -1,0 +1,6 @@
+model_checkpoint_path: "saved_variable"
+all_model_checkpoint_paths: "../0.7170967786542831_Skin_prediction/saved_variable"
+all_model_checkpoint_paths: "../0.7325806425463769_Skin_prediction/saved_variable"
+all_model_checkpoint_paths: "../0.7535483856354991_Skin_prediction/saved_variable"
+all_model_checkpoint_paths: "../0.7696774159708331_Skin_prediction/saved_variable"
+all_model_checkpoint_paths: "saved_variable"

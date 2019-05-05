@@ -1,0 +1,4 @@
+model_checkpoint_path: "saved_variable"
+all_model_checkpoint_paths: "../118.77404_Age_prediction/saved_variable"
+all_model_checkpoint_paths: "../78.84673_Age_prediction/saved_variable"
+all_model_checkpoint_paths: "saved_variable"
