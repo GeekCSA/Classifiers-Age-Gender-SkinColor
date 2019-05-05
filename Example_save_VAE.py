@@ -148,7 +148,7 @@ def encoder(X_in, X_details, keep_prob):
         X = tf.reshape(X_in, shape=[-1, heigh_global, width_global, 3], name="encoder_input_reshape")
         x = tf.layers.conv2d(X, filters=64, kernel_size=4, strides=2, padding='same', activation=activation, name="encoder_x_1")
         x = tf.nn.dropout(x, keep_prob)
-        x = tf.nn.max_pool(x, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='same', name="encoder_x_max_pool")
+        x = tf.nn.max_pool(x, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME', name="encoder_x_max_pool")
         x = tf.layers.conv2d(x, filters=64, kernel_size=4, strides=2, padding='same', activation=activation, name="encoder_x_2")
         x = tf.nn.dropout(x, keep_prob)
         x = tf.layers.conv2d(x, filters=64, kernel_size=4, strides=1, padding='same', activation=activation, name="encoder_x_3")
