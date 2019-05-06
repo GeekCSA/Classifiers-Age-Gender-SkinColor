@@ -217,7 +217,6 @@ if __name__ == '__main__':
 
         saver.restore(sess, './0.8864516115957691_Genders_prediction_ephoch_5/saved_variable') #TODO complete path
         print("Model restored.")
-0.8864516115957691_Genders_prediction_ephoch_5
         # initialize all of the variables in the session
         # sess.run(tf.global_variables_initializer())
 
